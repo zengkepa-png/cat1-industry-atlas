@@ -7,18 +7,17 @@
     <meta name="description" content="中国4G Cat.1模组产业全景分析，包含芯片厂商、模组厂商、下游应用及TOP50客户清单">
     <meta name="keywords" content="Cat.1, 物联网, 模组, 芯片, 移远通信, 广和通, 紫光展锐, 翱捷科技">
     
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Remix Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
-    
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-    
+    <!-- 使用系统字体和备用字体方案 -->
     <style>
+        /* 字体定义 - 优先使用系统字体 */
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 300 800;
+            font-display: swap;
+            src: local('Inter'), local('Inter-Regular'), local('PingFang SC'), local('Microsoft YaHei'), local('sans-serif');
+        }
+        
         :root {
             --primary: #0f172a;
             --primary-light: #1e293b;
@@ -49,11 +48,35 @@
         }
 
         body {
-            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            font-family: 'PingFang SC', 'Microsoft YaHei', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        /* 图表容器样式 */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background: #fafafa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .chart-loading {
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+        
+        .chart-error {
+            color: var(--danger);
+            font-size: 13px;
+            text-align: center;
+            padding: 20px;
         }
 
         /* Navigation */
@@ -543,11 +566,6 @@
             color: var(--text-dark);
         }
 
-        .chart-container {
-            position: relative;
-            height: 300px;
-        }
-
         /* Vendor Comparison Section */
         #vendors {
             background: var(--bg-white);
@@ -715,6 +733,7 @@
             border-radius: 10px;
             font-size: 0.9375rem;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
         .search-box input:focus {
@@ -746,6 +765,7 @@
             background: white;
             cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
         .filter-tab:hover,
@@ -1074,6 +1094,44 @@
             opacity: 1;
             visibility: visible;
         }
+        
+        /* 图标样式（使用CSS绘制简单图标替代RemixIcon） */
+        .ri-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1em;
+            height: 1em;
+        }
+        
+        .ri-star-fill::before { content: "★"; }
+        .ri-arrow-down-line::before { content: "↓"; }
+        .ri-mouse-line::before { content: "⬇"; }
+        .ri-share-line::before { content: "↔"; }
+        .ri-bar-chart-box-line::before { content: "📊"; }
+        .ri-building-line::before { content: "🏢"; }
+        .ri-layout-grid-line::before { content: "▦"; }
+        .ri-group-line::before { content: "👥"; }
+        .ri-lightbulb-line::before { content: "💡"; }
+        .ri-broadcast-line::before { content: "📡"; }
+        .ri-download-line::before { content: "⬇"; }
+        .ri-github-fill::before { content: "⎔"; }
+        .ri-arrow-down-line::before { content: "↓"; }
+        .ri-cpu-line::before { content: "💾"; }
+        .ri-apps-line::before { content: "⊞"; }
+        .ri-bank-card-line::before { content: "💳"; }
+        .ri-share-circle-line::before { content: "🔗"; }
+        .ri-flashlight-line::before { content: "⚡"; }
+        .ri-car-line::before { content: "🚗"; }
+        .ri-map-pin-line::before { content: "📍"; }
+        .ri-watch-line::before { content: "⌚"; }
+        .ri-trending-up-line::before { content: "📈"; }
+        .ri-bar-chart-grouped-line::before { content: "📊"; }
+        .ri-warning-line::before { content: "⚠"; }
+        .ri-rocket-2-line::before { content: "🚀"; }
+        .ri-search-line::before { content: "🔍"; }
+        .ri-close-line::before { content: "✕"; }
+        .ri-mic-line::before { content: "🎤"; }
     </style>
 </head>
 <body>
@@ -1082,7 +1140,7 @@
         <div class="nav-container">
             <a href="#" class="logo">
                 <div class="logo-icon">
-                    <i class="ri-broadcast-line"></i>
+                    <span class="ri-icon ri-broadcast-line"></span>
                 </div>
                 <span>Cat.1 Industry Atlas</span>
             </a>
@@ -1098,11 +1156,11 @@
             
             <div class="nav-actions">
                 <a href="#" class="btn btn-outline">
-                    <i class="ri-download-line"></i>
+                    <span class="ri-icon ri-download-line"></span>
                     下载报告
                 </a>
                 <a href="https://github.com/" target="_blank" class="btn btn-primary">
-                    <i class="ri-github-fill"></i>
+                    <span class="ri-icon ri-github-fill"></span>
                     GitHub
                 </a>
             </div>
@@ -1121,12 +1179,12 @@
         <div class="mobile-nav-header">
             <a href="#" class="logo">
                 <div class="logo-icon">
-                    <i class="ri-broadcast-line"></i>
+                    <span class="ri-icon ri-broadcast-line"></span>
                 </div>
                 <span>Cat.1 Atlas</span>
             </a>
             <div class="mobile-nav-close" onclick="toggleMobileNav()">
-                <i class="ri-close-line"></i>
+                <span class="ri-icon ri-close-line"></span>
             </div>
         </div>
         <ul class="mobile-nav-links">
@@ -1144,7 +1202,7 @@
         <div class="hero-bg"></div>
         <div class="hero-content">
             <div class="hero-badge">
-                <i class="ri-star-fill"></i>
+                <span class="ri-icon ri-star-fill"></span>
                 2025年产业全景分析
             </div>
             <h1>中国<span>4G Cat.1</span>模组产业图谱</h1>
@@ -1169,18 +1227,18 @@
             
             <div class="hero-actions">
                 <a href="#industry-chain" class="btn btn-white btn-hero">
-                    <i class="ri-arrow-down-line"></i>
+                    <span class="ri-icon ri-arrow-down-line"></span>
                     开始阅读
                 </a>
                 <a href="#market-data" class="btn btn-outline btn-hero" style="border-color: rgba(255,255,255,0.3); color: white;">
-                    <i class="ri-bar-chart-box-line"></i>
+                    <span class="ri-icon ri-bar-chart-box-line"></span>
                     查看数据
                 </a>
             </div>
         </div>
         
         <div class="scroll-indicator">
-            <i class="ri-mouse-line"></i>
+            <span class="ri-icon ri-mouse-line"></span>
         </div>
     </section>
 
@@ -1188,7 +1246,7 @@
     <section id="industry-chain" class="section">
         <div class="section-header">
             <div class="section-tag">
-                <i class="ri-share-line"></i>
+                <span class="ri-icon ri-share-line"></span>
                 产业链全景
             </div>
             <h2 class="section-title">三层产业链结构</h2>
@@ -1200,7 +1258,7 @@
             <div class="chain-row fade-in">
                 <div class="chain-node">
                     <div class="chain-label upstream">
-                        <i class="ri-mic-line"></i>
+                        <span class="ri-icon ri-mic-line"></span>
                         上游：芯片设计与制造
                     </div>
                     <h3 class="chain-title">核心芯片供应商</h3>
@@ -1238,14 +1296,14 @@
             </div>
             
             <div class="chain-arrow" style="text-align: center; padding: 1rem 0;">
-                <i class="ri-arrow-down-line" style="font-size: 2rem; color: var(--text-light);"></i>
+                <span class="ri-icon ri-arrow-down-line" style="font-size: 2rem; color: var(--text-light);"></span>
             </div>
             
             <!-- Midstream -->
             <div class="chain-row fade-in">
                 <div class="chain-node">
                     <div class="chain-label midstream">
-                        <i class="ri-cpu-line"></i>
+                        <span class="ri-icon ri-cpu-line"></span>
                         中游：模组集成与测试
                     </div>
                     <h3 class="chain-title">主要模组厂商</h3>
@@ -1283,14 +1341,14 @@
             </div>
             
             <div class="chain-arrow" style="text-align: center; padding: 1rem 0;">
-                <i class="ri-arrow-down-line" style="font-size: 2rem; color: var(--text-light);"></i>
+                <span class="ri-icon ri-arrow-down-line" style="font-size: 2rem; color: var(--text-light);"></span>
             </div>
             
             <!-- Downstream -->
             <div class="chain-row fade-in">
                 <div class="chain-node">
                     <div class="chain-label downstream">
-                        <i class="ri-apps-line"></i>
+                        <span class="ri-icon ri-apps-line"></span>
                         下游：终端产品与应用
                     </div>
                     <h3 class="chain-title">核心应用场景</h3>
@@ -1333,7 +1391,7 @@
     <section id="market-data" class="section">
         <div class="section-header">
             <div class="section-tag">
-                <i class="ri-bar-chart-box-line"></i>
+                <span class="ri-icon ri-bar-chart-box-line"></span>
                 数据洞察
             </div>
             <h2 class="section-title">市场数据分析</h2>
@@ -1345,7 +1403,7 @@
                 <div class="chart-header">
                     <h3 class="chart-title">全球模组市场份额（按厂商）</h3>
                 </div>
-                <div class="chart-container">
+                <div class="chart-container" id="chart1-container">
                     <canvas id="moduleMarketShareChart"></canvas>
                 </div>
             </div>
@@ -1354,7 +1412,7 @@
                 <div class="chart-header">
                     <h3 class="chart-title">蜂窝芯片市场份额（按厂商）</h3>
                 </div>
-                <div class="chart-container">
+                <div class="chart-container" id="chart2-container">
                     <canvas id="chipMarketShareChart"></canvas>
                 </div>
             </div>
@@ -1363,7 +1421,7 @@
                 <div class="chart-header">
                     <h3 class="chart-title">Cat.1模组价格走势（元）</h3>
                 </div>
-                <div class="chart-container">
+                <div class="chart-container" id="chart3-container">
                     <canvas id="priceTrendChart"></canvas>
                 </div>
             </div>
@@ -1372,7 +1430,7 @@
                 <div class="chart-header">
                     <h3 class="chart-title">市场规模预测（亿元）</h3>
                 </div>
-                <div class="chart-container">
+                <div class="chart-container" id="chart4-container">
                     <canvas id="marketForecastChart"></canvas>
                 </div>
             </div>
@@ -1383,7 +1441,7 @@
     <section id="vendors" class="section">
         <div class="section-header">
             <div class="section-tag">
-                <i class="ri-building-line"></i>
+                <span class="ri-icon ri-building-line"></span>
                 厂商对比
             </div>
             <h2 class="section-title">主要厂商对比分析</h2>
@@ -1515,7 +1573,7 @@
     <section id="applications" class="section">
         <div class="section-header">
             <div class="section-tag">
-                <i class="ri-layout-grid-line"></i>
+                <span class="ri-icon ri-layout-grid-line"></span>
                 应用场景
             </div>
             <h2 class="section-title">下游应用市场分析</h2>
@@ -1526,7 +1584,7 @@
             <div class="app-card fade-in">
                 <div class="app-header">
                     <div class="app-icon" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">
-                        <i class="ri-bank-card-line"></i>
+                        <span class="ri-icon ri-bank-card-line"></span>
                     </div>
                     <div class="app-market">50亿</div>
                 </div>
@@ -1543,7 +1601,7 @@
             <div class="app-card fade-in">
                 <div class="app-header">
                     <div class="app-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
-                        <i class="ri-share-circle-line"></i>
+                        <span class="ri-icon ri-share-circle-line"></span>
                     </div>
                     <div class="app-market">80亿</div>
                 </div>
@@ -1560,7 +1618,7 @@
             <div class="app-card fade-in">
                 <div class="app-header">
                     <div class="app-icon" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">
-                        <i class="ri-flashlight-line"></i>
+                        <span class="ri-icon ri-flashlight-line"></span>
                     </div>
                     <div class="app-market">120亿</div>
                 </div>
@@ -1577,7 +1635,7 @@
             <div class="app-card fade-in">
                 <div class="app-header">
                     <div class="app-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
-                        <i class="ri-car-line"></i>
+                        <span class="ri-icon ri-car-line"></span>
                     </div>
                     <div class="app-market">150亿</div>
                 </div>
@@ -1594,7 +1652,7 @@
             <div class="app-card fade-in">
                 <div class="app-header">
                     <div class="app-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">
-                        <i class="ri-map-pin-line"></i>
+                        <span class="ri-icon ri-map-pin-line"></span>
                     </div>
                     <div class="app-market">40亿</div>
                 </div>
@@ -1611,7 +1669,7 @@
             <div class="app-card fade-in">
                 <div class="app-header">
                     <div class="app-icon" style="background: rgba(236, 72, 153, 0.1); color: #ec4899;">
-                        <i class="ri-watch-line"></i>
+                        <span class="ri-icon ri-watch-line"></span>
                     </div>
                     <div class="app-market">35亿</div>
                 </div>
@@ -1631,7 +1689,7 @@
     <section id="top-clients" class="section">
         <div class="section-header">
             <div class="section-tag">
-                <i class="ri-group-line"></i>
+                <span class="ri-icon ri-group-line"></span>
                 TOP50客户
             </div>
             <h2 class="section-title">下游应用TOP50客户清单</h2>
@@ -1640,7 +1698,7 @@
         
         <div class="client-controls fade-in">
             <div class="search-box">
-                <i class="ri-search-line"></i>
+                <span class="ri-icon ri-search-line"></span>
                 <input type="text" id="clientSearch" placeholder="搜索企业名称或产品..." oninput="filterClients()">
             </div>
             <div class="filter-tabs">
@@ -1674,7 +1732,7 @@
     <section id="trends" class="section">
         <div class="section-header">
             <div class="section-tag">
-                <i class="ri-lightbulb-line"></i>
+                <span class="ri-icon ri-lightbulb-line"></span>
                 趋势展望
             </div>
             <h2 class="section-title">2025-2027年市场趋势</h2>
@@ -1685,7 +1743,7 @@
             <div class="trend-card fade-in">
                 <div class="trend-header">
                     <div class="trend-icon" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">
-                        <i class="ri-trending-up-line"></i>
+                        <span class="ri-icon ri-trending-up-line"></span>
                     </div>
                     <h3 class="trend-title">技术演进趋势</h3>
                 </div>
@@ -1701,7 +1759,7 @@
             <div class="trend-card fade-in">
                 <div class="trend-header">
                     <div class="trend-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
-                        <i class="ri-bar-chart-grouped-line"></i>
+                        <span class="ri-icon ri-bar-chart-grouped-line"></span>
                     </div>
                     <h3 class="trend-title">市场增长动力</h3>
                 </div>
@@ -1717,7 +1775,7 @@
             <div class="trend-card fade-in">
                 <div class="trend-header">
                     <div class="trend-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
-                        <i class="ri-warning-line"></i>
+                        <span class="ri-icon ri-warning-line"></span>
                     </div>
                     <h3 class="trend-title">主要风险与挑战</h3>
                 </div>
@@ -1733,7 +1791,7 @@
             <div class="trend-card fade-in">
                 <div class="trend-header">
                     <div class="trend-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">
-                        <i class="ri-rocket-2-line"></i>
+                        <span class="ri-icon ri-rocket-2-line"></span>
                     </div>
                     <h3 class="trend-title">竞争格局演变</h3>
                 </div>
@@ -1755,7 +1813,7 @@
                 <div class="footer-brand">
                     <div class="footer-logo">
                         <div class="logo-icon">
-                            <i class="ri-broadcast-line"></i>
+                            <span class="ri-icon ri-broadcast-line"></span>
                         </div>
                         <span>Cat.1 Industry Atlas</span>
                     </div>
@@ -1809,6 +1867,49 @@
     </footer>
 
     <script>
+        // 备用Chart.js加载函数
+        function loadChartJS(callback) {
+            if (typeof Chart !== 'undefined') {
+                callback();
+                return;
+            }
+            
+            // 尝试加载Chart.js
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js';
+            script.onload = function() {
+                console.log('Chart.js loaded successfully');
+                callback();
+            };
+            script.onerror = function() {
+                console.warn('Chart.js CDN failed, trying alternative...');
+                // 尝试备用CDN
+                const backupScript = document.createElement('script');
+                backupScript.src = 'https://unpkg.com/chart.js@4.4.1/dist/chart.umd.js';
+                backupScript.onload = function() {
+                    console.log('Chart.js loaded from unpkg');
+                    callback();
+                };
+                backupScript.onerror = function() {
+                    console.error('All CDN sources failed');
+                    showChartFallback();
+                };
+                document.head.appendChild(backupScript);
+            };
+            document.head.appendChild(script);
+        }
+        
+        // 显示图表备用内容
+        function showChartFallback() {
+            const containers = ['chart1-container', 'chart2-container', 'chart3-container', 'chart4-container'];
+            containers.forEach(id => {
+                const container = document.getElementById(id);
+                if (container) {
+                    container.innerHTML = '<div class="chart-error">图表加载失败，请刷新页面重试</div>';
+                }
+            });
+        }
+        
         // Client Data
         const clientsData = [
             // 金融支付领域
@@ -1877,7 +1978,10 @@
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            initCharts();
+            // 延迟加载Chart.js并初始化
+            loadChartJS(function() {
+                initCharts();
+            });
             renderClients();
             initScrollSpy();
             initNavbarScroll();
@@ -1887,156 +1991,191 @@
         function initCharts() {
             // Module Market Share Chart
             const moduleCtx = document.getElementById('moduleMarketShareChart');
-            if (moduleCtx) {
-                new Chart(moduleCtx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['移远通信', '广和通', '中移物联网', '日海智能', '美格智能', '有方科技', '其他'],
-                        datasets: [{
-                            data: [37.2, 8.0, 5.9, 5.6, 4.5, 3.3, 25.5],
-                            backgroundColor: [
-                                '#3b82f6',
-                                '#10b981',
-                                '#8b5cf6',
-                                '#f59e0b',
-                                '#ef4444',
-                                '#6366f1',
-                                '#94a3b8'
-                            ],
-                            borderWidth: 0
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                position: 'right',
-                                labels: {
-                                    padding: 15,
-                                    usePointStyle: true
+            if (moduleCtx && typeof Chart !== 'undefined') {
+                try {
+                    new Chart(moduleCtx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['移远通信', '广和通', '中移物联网', '日海智能', '美格智能', '有方科技', '其他'],
+                            datasets: [{
+                                data: [37.2, 8.0, 5.9, 5.6, 4.5, 3.3, 25.5],
+                                backgroundColor: [
+                                    '#3b82f6',
+                                    '#10b981',
+                                    '#8b5cf6',
+                                    '#f59e0b',
+                                    '#ef4444',
+                                    '#6366f1',
+                                    '#94a3b8'
+                                ],
+                                borderWidth: 0
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    position: 'right',
+                                    labels: {
+                                        padding: 15,
+                                        usePointStyle: true,
+                                        font: { size: 11 }
+                                    }
                                 }
                             }
                         }
-                    }
-                });
+                    });
+                } catch (e) {
+                    console.error('Chart 1 error:', e);
+                    showChartFallback();
+                }
             }
 
             // Chip Market Share Chart
             const chipCtx = document.getElementById('chipMarketShareChart');
-            if (chipCtx) {
-                new Chart(chipCtx, {
-                    type: 'pie',
-                    data: {
-                        labels: ['高通', '紫光展锐', '翱捷科技', '联发科', '移芯通信', '芯翼信息', '其他'],
-                        datasets: [{
-                            data: [42, 25, 7, 5, 4, 3, 14],
-                            backgroundColor: [
-                                '#6366f1',
-                                '#8b5cf6',
-                                '#3b82f6',
-                                '#10b981',
-                                '#f59e0b',
-                                '#ef4444',
-                                '#94a3b8'
-                            ],
-                            borderWidth: 0
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                position: 'right',
-                                labels: {
-                                    padding: 15,
-                                    usePointStyle: true
+            if (chipCtx && typeof Chart !== 'undefined') {
+                try {
+                    new Chart(chipCtx, {
+                        type: 'pie',
+                        data: {
+                            labels: ['高通', '紫光展锐', '翱捷科技', '联发科', '移芯通信', '芯翼信息', '其他'],
+                            datasets: [{
+                                data: [42, 25, 7, 5, 4, 3, 14],
+                                backgroundColor: [
+                                    '#6366f1',
+                                    '#8b5cf6',
+                                    '#3b82f6',
+                                    '#10b981',
+                                    '#f59e0b',
+                                    '#ef4444',
+                                    '#94a3b8'
+                                ],
+                                borderWidth: 0
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    position: 'right',
+                                    labels: {
+                                        padding: 15,
+                                        usePointStyle: true,
+                                        font: { size: 11 }
+                                    }
                                 }
                             }
                         }
-                    }
-                });
+                    });
+                } catch (e) {
+                    console.error('Chart 2 error:', e);
+                }
             }
 
             // Price Trend Chart
             const priceCtx = document.getElementById('priceTrendChart');
-            if (priceCtx) {
-                new Chart(priceCtx, {
-                    type: 'line',
-                    data: {
-                        labels: ['2019', '2020', '2021', '2022', '2023', '2024', '2025E', '2026E'],
-                        datasets: [{
-                            label: 'Cat.1模组均价',
-                            data: [50, 45, 38, 30, 24, 18, 15, 12],
-                            borderColor: '#3b82f6',
-                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                            fill: true,
-                            tension: 0.4
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: false
-                            }
+            if (priceCtx && typeof Chart !== 'undefined') {
+                try {
+                    new Chart(priceCtx, {
+                        type: 'line',
+                        data: {
+                            labels: ['2019', '2020', '2021', '2022', '2023', '2024', '2025E', '2026E'],
+                            datasets: [{
+                                label: 'Cat.1模组均价',
+                                data: [50, 45, 38, 30, 24, 18, 15, 12],
+                                borderColor: '#3b82f6',
+                                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                                fill: true,
+                                tension: 0.4
+                            }]
                         },
-                        scales: {
-                            y: {
-                                beginAtZero: false,
-                                min: 0,
-                                max: 60,
-                                title: {
-                                    display: true,
-                                    text: '价格（元）'
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    display: false
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: false,
+                                    min: 0,
+                                    max: 60,
+                                    title: {
+                                        display: true,
+                                        text: '价格（元）',
+                                        font: { size: 11 }
+                                    }
+                                },
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: '年份',
+                                        font: { size: 11 }
+                                    }
                                 }
                             }
                         }
-                    }
-                });
+                    });
+                } catch (e) {
+                    console.error('Chart 3 error:', e);
+                }
             }
 
             // Market Forecast Chart
             const forecastCtx = document.getElementById('marketForecastChart');
-            if (forecastCtx) {
-                new Chart(forecastCtx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['2024', '2025E', '2026E', '2027E', '2028E'],
-                        datasets: [{
-                            label: '市场规模',
-                            data: [320, 380, 450, 500, 520],
-                            backgroundColor: [
-                                'rgba(59, 130, 246, 0.8)',
-                                'rgba(59, 130, 246, 0.8)',
-                                'rgba(16, 185, 129, 0.8)',
-                                'rgba(16, 185, 129, 0.8)',
-                                'rgba(16, 185, 129, 0.8)'
-                            ],
-                            borderRadius: 8
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: false
-                            }
+            if (forecastCtx && typeof Chart !== 'undefined') {
+                try {
+                    new Chart(forecastCtx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['2024', '2025E', '2026E', '2027E', '2028E'],
+                            datasets: [{
+                                label: '市场规模',
+                                data: [320, 380, 450, 500, 520],
+                                backgroundColor: [
+                                    'rgba(59, 130, 246, 0.8)',
+                                    'rgba(59, 130, 246, 0.8)',
+                                    'rgba(16, 185, 129, 0.8)',
+                                    'rgba(16, 185, 129, 0.8)',
+                                    'rgba(16, 185, 129, 0.8)'
+                                ],
+                                borderRadius: 8
+                            }]
                         },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: '市场规模（亿元）'
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    display: false
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    title: {
+                                        display: true,
+                                        text: '市场规模（亿元）',
+                                        font: { size: 11 }
+                                    }
+                                },
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: '年份',
+                                        font: { size: 11 }
+                                    }
                                 }
                             }
                         }
-                    }
-                });
+                    });
+                } catch (e) {
+                    console.error('Chart 4 error:', e);
+                }
             }
         }
 

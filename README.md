@@ -5,8 +5,8 @@ AIGC:
     Label: AIGC
     ProduceID: "00000000000000000000000000000000"
     PropagateID: "00000000000000000000000000000000"
-    ReservedCode1: 3045022100ad9eeaf65a1b6612d8ab2183cb1bb658a970307bb9610b64cf900d32a33672a902207ce6b0e16a2d5ae12719a7eac549cf06b533dc084f758fe9fdf05628b7123e0b
-    ReservedCode2: 304502202d4325b11b97a2c35d81c65fac02d8be46cf7568c29568f9122fb197f6cf0b4e022100bbf5c6a95964acb23b4b1a9cb4994b3c660e1bd846512ddbfec2bbe757b99a74
+    ReservedCode1: 3045022100859c417dede9cd8b2a88310791a096b6827a8e98c5763e9993f95b4ad46aad5202202e4a9cabe15cc99fc40dd9c8c2589c03eb3ee5e9a26818e8c8f4af5f105b4a96
+    ReservedCode2: 304602210082cc948275f31a04740f4d5cbc46144b341ffda914d25ece02b67bda9b2c9d75022100d11cf5885c6eac576a862fe492241e5bd7167f9ff59627f279d682e0b73d3f22
 ---
 
 # 中国4G Cat.1模组产业图谱
@@ -19,7 +19,66 @@ AIGC:
 
 网页已部署至GitHub Pages，可通过以下链接访问：
 
-**https://zengkepa-png.github.io/cat1-industry-atlas/**
+**https://[用户名].github.io/cat1-industry-atlas/**
+
+（请将 `[用户名]` 替换为您的GitHub用户名）
+
+## 部署方法
+
+### 方法一：使用GitHub网页界面（推荐）
+
+1. **创建仓库**
+   - 登录GitHub账户
+   - 点击右上角 "+" → "New repository"
+   - Repository name填写：`cat1-industry-atlas`
+   - 选择 "Public"
+   - 点击 "Create repository"
+
+2. **上传文件**
+   - 点击 "uploading an existing file"
+   - 将本项目的 `index.html` 文件拖拽到上传区域
+   - 点击 "Commit changes"
+
+3. **启用GitHub Pages**
+   - 进入仓库的 "Settings" 页面
+   - 左侧菜单选择 "Pages"
+   - 在 "Branch" 部分：
+     - Branch选择：`main`（或 `master`）
+     - Folder选择：`/ (root)`
+   - 点击 "Save"
+   - 等待1-2分钟刷新页面，即可看到访问链接
+
+### 方法二：使用Git命令行
+
+```bash
+# 克隆仓库（如果已有）
+git clone https://github.com/[用户名]/cat1-industry-atlas.git
+
+# 进入项目目录
+cd cat1-industry-atlas
+
+# 初始化Git（如果未初始化）
+git init
+git add .
+git commit -m "Initial commit: China 4G Cat.1 Industry Atlas"
+
+# 关联GitHub仓库
+git remote add origin https://github.com/[用户名]/cat1-industry-atlas.git
+
+# 推送至GitHub
+git push -u origin main
+
+# 启用GitHub Pages（在GitHub仓库设置中启用）
+```
+
+## 项目结构
+
+```
+cat1-industry-atlas/
+├── index.html          # 主页面文件（包含所有HTML、CSS、JavaScript）
+├── README.md           # 本说明文件
+└── .gitignore          # Git忽略文件（可选）
+```
 
 ## 功能特性
 
