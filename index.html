@@ -1,0 +1,2151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国4G Cat.1模组产业图谱（2025）</title>
+    <meta name="description" content="中国4G Cat.1模组产业全景分析，包含芯片厂商、模组厂商、下游应用及TOP50客户清单">
+    <meta name="keywords" content="Cat.1, 物联网, 模组, 芯片, 移远通信, 广和通, 紫光展锐, 翱捷科技">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --secondary: #3b82f6;
+            --accent: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --text-dark: #0f172a;
+            --text-gray: #64748b;
+            --text-light: #94a3b8;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--secondary);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1.25rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-dark);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            background: var(--bg-light);
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-dark);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            overflow: hidden;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+            background-image: 
+                radial-gradient(circle at 20% 50%, var(--secondary) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, var(--accent) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            color: white;
+            font-size: 0.875rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .hero-stat-label {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 0.25rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-hero {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-white:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 32px;
+            height: 32px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 0.875rem;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--secondary);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon.blue { background: rgba(59, 130, 246, 0.1); color: var(--secondary); }
+        .card-icon.green { background: rgba(16, 185, 129, 0.1); color: var(--accent); }
+        .card-icon.orange { background: rgba(245, 158, 11, 0.1); color: var(--warning); }
+        .card-icon.red { background: rgba(239, 68, 68, 0.1); color: var(--danger); }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .card-text {
+            color: var(--text-gray);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+
+        /* Industry Chain Section */
+        #industry-chain {
+            background: var(--bg-white);
+        }
+
+        .chain-container {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .chain-row {
+            display: flex;
+            align-items: stretch;
+            gap: 2rem;
+        }
+
+        .chain-node {
+            flex: 1;
+            background: var(--bg-light);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .chain-node:hover {
+            border-color: var(--secondary);
+        }
+
+        .chain-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 0.875rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .chain-label.upstream { background: rgba(59, 130, 246, 0.1); color: var(--secondary); }
+        .chain-label.midstream { background: rgba(16, 185, 129, 0.1); color: var(--accent); }
+        .chain-label.downstream { background: rgba(245, 158, 11, 0.1); color: var(--warning); }
+
+        .chain-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .chain-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .chain-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-white);
+            border-radius: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .chain-item:hover {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .chain-item-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .chain-item-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .chain-item-info p {
+            font-size: 0.8125rem;
+            color: var(--text-gray);
+        }
+
+        .chain-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 2rem;
+        }
+
+        /* Market Data Section */
+        #market-data {
+            background: var(--bg-light);
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .chart-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .chart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+        /* Vendor Comparison Section */
+        #vendors {
+            background: var(--bg-white);
+        }
+
+        .vendor-table-container {
+            overflow-x: auto;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .vendor-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .vendor-table th {
+            background: var(--bg-light);
+            padding: 1rem 1.25rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-dark);
+            white-space: nowrap;
+        }
+
+        .vendor-table td {
+            padding: 1rem 1.25rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-gray);
+        }
+
+        .vendor-table tr:hover td {
+            background: var(--bg-light);
+        }
+
+        .vendor-name {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .vendor-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .badge {
+            display: inline-flex;
+            padding: 0.25rem 0.625rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .badge-blue { background: rgba(59, 130, 246, 0.1); color: var(--secondary); }
+        .badge-green { background: rgba(16, 185, 129, 0.1); color: var(--accent); }
+        .badge-orange { background: rgba(245, 158, 11, 0.1); color: var(--warning); }
+
+        /* Applications Section */
+        #applications {
+            background: var(--bg-light);
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .app-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .app-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .app-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .app-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .app-market {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .app-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .app-desc {
+            color: var(--text-gray);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .app-clients {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .client-tag {
+            padding: 0.375rem 0.75rem;
+            background: var(--bg-light);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: var(--text-gray);
+        }
+
+        /* TOP50 Clients Section */
+        #top-clients {
+            background: var(--bg-white);
+        }
+
+        .client-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.875rem 1rem 0.875rem 2.75rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.9375rem;
+            transition: all 0.2s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .search-box svg {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 0.625rem 1.25rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.875rem;
+            color: var(--text-gray);
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-tab:hover,
+        .filter-tab.active {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            color: white;
+        }
+
+        .client-table-container {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .client-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .client-table th {
+            background: var(--bg-light);
+            padding: 1rem 1.25rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-dark);
+            white-space: nowrap;
+        }
+
+        .client-table td {
+            padding: 1rem 1.25rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-gray);
+        }
+
+        .client-table tr:hover td {
+            background: var(--bg-light);
+        }
+
+        /* Trend Section */
+        #trends {
+            background: var(--bg-light);
+        }
+
+        .trend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .trend-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .trend-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .trend-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .trend-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .trend-list {
+            list-style: none;
+        }
+
+        .trend-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-gray);
+            font-size: 0.9375rem;
+        }
+
+        .trend-list li:last-child {
+            border-bottom: none;
+        }
+
+        .trend-list li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--secondary);
+            margin-top: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-desc {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+
+        .footer-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.875rem;
+        }
+
+        .footer-sources {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8125rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-actions {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .hero-stat-value {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .chain-row {
+                flex-direction: column;
+            }
+
+            .chain-arrow {
+                transform: rotate(90deg);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background: white;
+            z-index: 2000;
+            padding: 2rem;
+            transition: right 0.3s ease;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .mobile-nav.open {
+            right: 0;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .mobile-nav-close {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+        }
+
+        .mobile-nav-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-nav-links a {
+            display: block;
+            padding: 1rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .mobile-nav-links a:hover,
+        .mobile-nav-links a.active {
+            background: var(--bg-light);
+            color: var(--secondary);
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="ri-broadcast-line"></i>
+                </div>
+                <span>Cat.1 Industry Atlas</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#industry-chain" class="active">产业链</a></li>
+                <li><a href="#market-data">市场数据</a></li>
+                <li><a href="#vendors">厂商对比</a></li>
+                <li><a href="#applications">下游应用</a></li>
+                <li><a href="#top-clients">TOP50客户</a></li>
+                <li><a href="#trends">趋势展望</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <a href="#" class="btn btn-outline">
+                    <i class="ri-download-line"></i>
+                    下载报告
+                </a>
+                <a href="https://github.com/" target="_blank" class="btn btn-primary">
+                    <i class="ri-github-fill"></i>
+                    GitHub
+                </a>
+            </div>
+            
+            <div class="mobile-toggle" onclick="toggleMobileNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-overlay" onclick="toggleMobileNav()"></div>
+    <div class="mobile-nav">
+        <div class="mobile-nav-header">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="ri-broadcast-line"></i>
+                </div>
+                <span>Cat.1 Atlas</span>
+            </a>
+            <div class="mobile-nav-close" onclick="toggleMobileNav()">
+                <i class="ri-close-line"></i>
+            </div>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="#industry-chain" onclick="toggleMobileNav()">产业链</a></li>
+            <li><a href="#market-data" onclick="toggleMobileNav()">市场数据</a></li>
+            <li><a href="#vendors" onclick="toggleMobileNav()">厂商对比</a></li>
+            <li><a href="#applications" onclick="toggleMobileNav()">下游应用</a></li>
+            <li><a href="#top-clients" onclick="toggleMobileNav()">TOP50客户</a></li>
+            <li><a href="#trends" onclick="toggleMobileNav()">趋势展望</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="ri-star-fill"></i>
+                2025年产业全景分析
+            </div>
+            <h1>中国<span>4G Cat.1</span>模组产业图谱</h1>
+            <p class="hero-description">
+                全面解析Cat.1模组产业链结构、核心厂商竞争格局、下游应用场景及TOP50客户清单
+            </p>
+            
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-value">70%</div>
+                    <div class="hero-stat-label">中国厂商全球份额</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">9亿</div>
+                    <div class="hero-stat-label">年出货量（颗）</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">5000万</div>
+                    <div class="hero-stat-label">新国标电单车需求</div>
+                </div>
+            </div>
+            
+            <div class="hero-actions">
+                <a href="#industry-chain" class="btn btn-white btn-hero">
+                    <i class="ri-arrow-down-line"></i>
+                    开始阅读
+                </a>
+                <a href="#market-data" class="btn btn-outline btn-hero" style="border-color: rgba(255,255,255,0.3); color: white;">
+                    <i class="ri-bar-chart-box-line"></i>
+                    查看数据
+                </a>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <i class="ri-mouse-line"></i>
+        </div>
+    </section>
+
+    <!-- Industry Chain Section -->
+    <section id="industry-chain" class="section">
+        <div class="section-header">
+            <div class="section-tag">
+                <i class="ri-share-line"></i>
+                产业链全景
+            </div>
+            <h2 class="section-title">三层产业链结构</h2>
+            <p class="section-subtitle">从芯片设计到模组集成，再到终端应用，中国Cat.1模组产业已形成完整的自主可控生态</p>
+        </div>
+        
+        <div class="chain-container">
+            <!-- Upstream -->
+            <div class="chain-row fade-in">
+                <div class="chain-node">
+                    <div class="chain-label upstream">
+                        <i class="ri-mic-line"></i>
+                        上游：芯片设计与制造
+                    </div>
+                    <h3 class="chain-title">核心芯片供应商</h3>
+                    <div class="chain-items">
+                        <div class="chain-item">
+                            <div class="chain-item-logo" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">ASR</div>
+                            <div class="chain-item-info">
+                                <h4>翱捷科技（ASR）</h4>
+                                <p>市场份额28%，ASR3601/1601系列</p>
+                            </div>
+                        </div>
+                        <div class="chain-item">
+                            <div class="chain-item-logo" style="background: linear-gradient(135deg, #8b5cf6, #6d28d9);">UNISOC</div>
+                            <div class="chain-item-info">
+                                <h4>紫光展锐（UNISOC）</h4>
+                                <p>市场份额22%，春藤8910DM系列</p>
+                            </div>
+                        </div>
+                        <div class="chain-item">
+                            <div class="chain-item-logo" style="background: linear-gradient(135deg, #10b981, #059669);">EC</div>
+                            <div class="chain-item-info">
+                                <h4>上海移芯（Eigencomm）</h4>
+                                <p>市场份额18%，EC618超低功耗平台</p>
+                            </div>
+                        </div>
+                        <div class="chain-item">
+                            <div class="chain-item-logo" style="background: linear-gradient(135deg, #f59e0b, #d97706);">MEIG</div>
+                            <div class="chain-item-info">
+                                <h4>智联安（MEIG）</h4>
+                                <p>市场份额12%，低功耗物联网芯片</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chain-arrow" style="text-align: center; padding: 1rem 0;">
+                <i class="ri-arrow-down-line" style="font-size: 2rem; color: var(--text-light);"></i>
+            </div>
+            
+            <!-- Midstream -->
+            <div class="chain-row fade-in">
+                <div class="chain-node">
+                    <div class="chain-label midstream">
+                        <i class="ri-cpu-line"></i>
+                        中游：模组集成与测试
+                    </div>
+                    <h3 class="chain-title">主要模组厂商</h3>
+                    <div class="chain-items">
+                        <div class="chain-item">
+                            <div class="chain-item-logo" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">Q</div>
+                            <div class="chain-item-info">
+                                <h4>移远通信</h4>
+                                <p>全球份额32%，EG800G/EG915U系列</p>
+                            </div>
+                        </div>
+                        <div class="chain-item">
+                            <div class="chain-item-logo" style="background: linear-gradient(135deg, #10b981, #059669);">F</div>
+                            <div class="chain-item-info">
+                                <h4>广和通</h4>
+                                <p>全球份额18%，L610/NL668系列</p>
+                            </div>
+                        </div>
+                        <div class="chain-item">
+                            <div class="chain-item-logo" style="background: linear-gradient(135deg, #8b5cf6, #6d28d9);">M</div>
+                            <div class="chain-item-info">
+                                <h4>美格智能</h4>
+                                <p>份额4.5%，SLM332/SLM320系列</p>
+                            </div>
+                        </div>
+                        <div class="chain-item">
+                            <div class="chain-item-logo" style="background: linear-gradient(135deg, #f59e0b, #d97706);">H</div>
+                            <div class="chain-item-info">
+                                <h4>合宙通信</h4>
+                                <p>主流方案商，Air780E/Air724UG系列</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chain-arrow" style="text-align: center; padding: 1rem 0;">
+                <i class="ri-arrow-down-line" style="font-size: 2rem; color: var(--text-light);"></i>
+            </div>
+            
+            <!-- Downstream -->
+            <div class="chain-row fade-in">
+                <div class="chain-node">
+                    <div class="chain-label downstream">
+                        <i class="ri-apps-line"></i>
+                        下游：终端产品与应用
+                    </div>
+                    <h3 class="chain-title">核心应用场景</h3>
+                    <div class="chain-items">
+                        <div class="chain-item">
+                            <div class="chain-item-logo" style="background: linear-gradient(135deg, #ef4444, #dc2626);">¥</div>
+                            <div class="chain-item-info">
+                                <h4>金融支付</h4>
+                                <p>POS机、云喇叭，约50亿元</p>
+                            </div>
+                        </div>
+                        <div class="chain-item">
+                            <div class="chain-item-logo" style="background: linear-gradient(135deg, #10b981, #059669);">S</div>
+                            <div class="chain-item-info">
+                                <h4>共享经济</h4>
+                                <p>充电宝、单车，约80亿元</p>
+                            </div>
+                        </div>
+                        <div class="chain-item">
+                            <div class="chain-item-logo" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">⚡</div>
+                            <div class="chain-item-info">
+                                <h4>智慧能源</h4>
+                                <p>智能表计，约120亿元</p>
+                            </div>
+                        </div>
+                        <div class="chain-item">
+                            <div class="chain-item-logo" style="background: linear-gradient(135deg, #f59e0b, #d97706);">🚗</div>
+                            <div class="chain-item-info">
+                                <h4>车载运输</h4>
+                                <p>电动自行车，约150亿元</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Data Section -->
+    <section id="market-data" class="section">
+        <div class="section-header">
+            <div class="section-tag">
+                <i class="ri-bar-chart-box-line"></i>
+                数据洞察
+            </div>
+            <h2 class="section-title">市场数据分析</h2>
+            <p class="section-subtitle">基于Counterpoint、IDC等权威机构的行业研究数据</p>
+        </div>
+        
+        <div class="charts-grid">
+            <div class="chart-card fade-in">
+                <div class="chart-header">
+                    <h3 class="chart-title">全球模组市场份额（按厂商）</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="moduleMarketShareChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-card fade-in">
+                <div class="chart-header">
+                    <h3 class="chart-title">蜂窝芯片市场份额（按厂商）</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="chipMarketShareChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-card fade-in">
+                <div class="chart-header">
+                    <h3 class="chart-title">Cat.1模组价格走势（元）</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="priceTrendChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-card fade-in">
+                <div class="chart-header">
+                    <h3 class="chart-title">市场规模预测（亿元）</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="marketForecastChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vendors Section -->
+    <section id="vendors" class="section">
+        <div class="section-header">
+            <div class="section-tag">
+                <i class="ri-building-line"></i>
+                厂商对比
+            </div>
+            <h2 class="section-title">主要厂商对比分析</h2>
+            <p class="section-subtitle">芯片厂商与模组厂商的核心技术参数与市场表现对比</p>
+        </div>
+        
+        <div class="vendor-table-container fade-in">
+            <table class="vendor-table">
+                <thead>
+                    <tr>
+                        <th>厂商名称</th>
+                        <th>主要产品</th>
+                        <th>市场份额</th>
+                        <th>芯片平台</th>
+                        <th>封装尺寸</th>
+                        <th>特色功能</th>
+                        <th>市场定位</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="vendor-name">
+                                <div class="vendor-logo" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">Q</div>
+                                <div>
+                                    <strong>移远通信</strong>
+                                    <br><small style="color: var(--text-light);">Quectel</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>EG800G、EG915U</td>
+                        <td><span class="badge badge-blue">32%</span></td>
+                        <td>ASR/展锐</td>
+                        <td>23×23mm</td>
+                        <td>BT/WiFi Scan、GNSS</td>
+                        <td>全球龙头</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="vendor-name">
+                                <div class="vendor-logo" style="background: linear-gradient(135deg, #10b981, #059669);">F</div>
+                                <div>
+                                    <strong>广和通</strong>
+                                    <br><small style="color: var(--text-light);">Fibocom</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>L610、NL668</td>
+                        <td><span class="badge badge-green">18%</span></td>
+                        <td>展锐8910DM</td>
+                        <td>21×21mm</td>
+                        <td>VoLTE、蓝牙</td>
+                        <td>车载领先</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="vendor-name">
+                                <div class="vendor-logo" style="background: linear-gradient(135deg, #8b5cf6, #6d28d9);">S</div>
+                                <div>
+                                    <strong>美格智能</strong>
+                                    <br><small style="color: var(--text-light);">MeigSmart</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>SLM332、SLM320</td>
+                        <td><span class="badge badge-orange">4.5%</span></td>
+                        <td>展锐8910DM</td>
+                        <td>17.6×15.7mm</td>
+                        <td>超小尺寸、Open CPU</td>
+                        <td>智能模组</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="vendor-name">
+                                <div class="vendor-logo" style="background: linear-gradient(135deg, #f59e0b, #d97706);">H</div>
+                                <div>
+                                    <strong>合宙通信</strong>
+                                    <br><small style="color: var(--text-light);">AirM2M</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>Air780E、Air724UG</td>
+                        <td><span class="badge badge-blue">主流</span></td>
+                        <td>移芯EC618/展锐</td>
+                        <td>17.7×15.8mm</td>
+                        <td>超低功耗、GNSS集成</td>
+                        <td>开发者生态</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="vendor-name">
+                                <div class="vendor-logo" style="background: linear-gradient(135deg, #ef4444, #dc2626);">ASR</div>
+                                <div>
+                                    <strong>翱捷科技</strong>
+                                    <br><small style="color: var(--text-light);">ASR Micro</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>ASR3601、ASR1601</td>
+                        <td><span class="badge badge-blue">28%</span></td>
+                        <td>自研</td>
+                        <td>5.6×5.6mm</td>
+                        <td>Cat.1+GSM双模</td>
+                        <td>芯片龙头</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="vendor-name">
+                                <div class="vendor-logo" style="background: linear-gradient(135deg, #6366f1, #4f46e5);">U</div>
+                                <div>
+                                    <strong>紫光展锐</strong>
+                                    <br><small style="color: var(--text-light);">UNISOC</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>春藤8910DM</td>
+                        <td><span class="badge badge-green">22%</span></td>
+                        <td>自研</td>
+                        <td>6×6mm</td>
+                        <td>Cat.1 bis+2G双模</td>
+                        <td>芯片领先</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Applications Section -->
+    <section id="applications" class="section">
+        <div class="section-header">
+            <div class="section-tag">
+                <i class="ri-layout-grid-line"></i>
+                应用场景
+            </div>
+            <h2 class="section-title">下游应用市场分析</h2>
+            <p class="section-subtitle">Cat.1模组在各大垂直领域的应用规模与核心客户</p>
+        </div>
+        
+        <div class="app-grid">
+            <div class="app-card fade-in">
+                <div class="app-header">
+                    <div class="app-icon" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">
+                        <i class="ri-bank-card-line"></i>
+                    </div>
+                    <div class="app-market">50亿</div>
+                </div>
+                <h3 class="app-title">金融支付</h3>
+                <p class="app-desc">POS机、云喇叭、扫码盒子等移动支付终端设备</p>
+                <div class="app-clients">
+                    <span class="client-tag">新大陆</span>
+                    <span class="client-tag">百富计算机</span>
+                    <span class="client-tag">拉卡拉</span>
+                    <span class="client-tag">联迪商用</span>
+                </div>
+            </div>
+            
+            <div class="app-card fade-in">
+                <div class="app-header">
+                    <div class="app-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                        <i class="ri-share-circle-line"></i>
+                    </div>
+                    <div class="app-market">80亿</div>
+                </div>
+                <h3 class="app-title">共享经济</h3>
+                <p class="app-desc">共享充电宝、共享单车、共享电动车等共享终端</p>
+                <div class="app-clients">
+                    <span class="client-tag">怪兽充电</span>
+                    <span class="client-tag">街电科技</span>
+                    <span class="client-tag">哈啰出行</span>
+                    <span class="client-tag">青桔单车</span>
+                </div>
+            </div>
+            
+            <div class="app-card fade-in">
+                <div class="app-header">
+                    <div class="app-icon" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">
+                        <i class="ri-flashlight-line"></i>
+                    </div>
+                    <div class="app-market">120亿</div>
+                </div>
+                <h3 class="app-title">智慧能源</h3>
+                <p class="app-desc">智能电表、智能水表、智能燃气表等能源计量设备</p>
+                <div class="app-clients">
+                    <span class="client-tag">三星医疗</span>
+                    <span class="client-tag">威胜信息</span>
+                    <span class="client-tag">华立科技</span>
+                    <span class="client-tag">林洋能源</span>
+                </div>
+            </div>
+            
+            <div class="app-card fade-in">
+                <div class="app-header">
+                    <div class="app-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
+                        <i class="ri-car-line"></i>
+                    </div>
+                    <div class="app-market">150亿</div>
+                </div>
+                <h3 class="app-title">车载运输</h3>
+                <p class="app-desc">新国标电动自行车、OBD、行车记录仪等车载设备</p>
+                <div class="app-clients">
+                    <span class="client-tag">雅迪控股</span>
+                    <span class="client-tag">爱玛科技</span>
+                    <span class="client-tag">台铃集团</span>
+                    <span class="client-tag">小牛电动</span>
+                </div>
+            </div>
+            
+            <div class="app-card fade-in">
+                <div class="app-header">
+                    <div class="app-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">
+                        <i class="ri-map-pin-line"></i>
+                    </div>
+                    <div class="app-market">40亿</div>
+                </div>
+                <h3 class="app-title">资产追踪</h3>
+                <p class="app-desc">物流追踪器、宠物定位器、人员定位追踪设备</p>
+                <div class="app-clients">
+                    <span class="client-tag">途强科技</span>
+                    <span class="client-tag">移为通信</span>
+                    <span class="client-tag">美力高</span>
+                    <span class="client-tag">康凯斯</span>
+                </div>
+            </div>
+            
+            <div class="app-card fade-in">
+                <div class="app-header">
+                    <div class="app-icon" style="background: rgba(236, 72, 153, 0.1); color: #ec4899;">
+                        <i class="ri-watch-line"></i>
+                    </div>
+                    <div class="app-market">35亿</div>
+                </div>
+                <h3 class="app-title">智能穿戴</h3>
+                <p class="app-desc">儿童电话手表、老人定位器、健康监测手环</p>
+                <div class="app-clients">
+                    <span class="client-tag">小天才</span>
+                    <span class="client-tag">华为儿童</span>
+                    <span class="client-tag">360儿童</span>
+                    <span class="client-tag">小米</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOP50 Clients Section -->
+    <section id="top-clients" class="section">
+        <div class="section-header">
+            <div class="section-tag">
+                <i class="ri-group-line"></i>
+                TOP50客户
+            </div>
+            <h2 class="section-title">下游应用TOP50客户清单</h2>
+            <p class="section-subtitle">涵盖金融支付、共享经济、智慧能源、车载运输等核心应用领域</p>
+        </div>
+        
+        <div class="client-controls fade-in">
+            <div class="search-box">
+                <i class="ri-search-line"></i>
+                <input type="text" id="clientSearch" placeholder="搜索企业名称或产品..." oninput="filterClients()">
+            </div>
+            <div class="filter-tabs">
+                <button class="filter-tab active" onclick="filterByCategory('all')">全部</button>
+                <button class="filter-tab" onclick="filterByCategory('支付')">金融支付</button>
+                <button class="filter-tab" onclick="filterByCategory('共享')">共享经济</button>
+                <button class="filter-tab" onclick="filterByCategory('能源')">智慧能源</button>
+                <button class="filter-tab" onclick="filterByCategory('车载')">车载运输</button>
+            </div>
+        </div>
+        
+        <div class="client-table-container fade-in">
+            <table class="client-table" id="clientTable">
+                <thead>
+                    <tr>
+                        <th style="width: 60px;">序号</th>
+                        <th>企业名称</th>
+                        <th>主要产品</th>
+                        <th>应用领域</th>
+                        <th>市场地位</th>
+                    </tr>
+                </thead>
+                <tbody id="clientTableBody">
+                    <!-- JavaScript将动态填充此表 -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Trends Section -->
+    <section id="trends" class="section">
+        <div class="section-header">
+            <div class="section-tag">
+                <i class="ri-lightbulb-line"></i>
+                趋势展望
+            </div>
+            <h2 class="section-title">2025-2027年市场趋势</h2>
+            <p class="section-subtitle">Cat.1模组产业的技术演进与市场发展方向</p>
+        </div>
+        
+        <div class="trend-grid">
+            <div class="trend-card fade-in">
+                <div class="trend-header">
+                    <div class="trend-icon" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">
+                        <i class="ri-trending-up-line"></i>
+                    </div>
+                    <h3 class="trend-title">技术演进趋势</h3>
+                </div>
+                <ul class="trend-list">
+                    <li>Cat.1 bis将成为中速率物联网绝对主流技术</li>
+                    <li>极致小型化：1618封装将成为行业标准</li>
+                    <li>低功耗深化：PSM模式待机功耗降至微安级</li>
+                    <li>功能集成化：Cat.1+GNSS+蓝牙+Wi-Fi多合一</li>
+                    <li>安全增强：国密算法硬件加密成为标配</li>
+                </ul>
+            </div>
+            
+            <div class="trend-card fade-in">
+                <div class="trend-header">
+                    <div class="trend-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                        <i class="ri-bar-chart-grouped-line"></i>
+                    </div>
+                    <h3 class="trend-title">市场增长动力</h3>
+                </div>
+                <ul class="trend-list">
+                    <li>新国标电动自行车：2026年换新需求5000万辆</li>
+                    <li>智能表计渗透：电网数字化改造持续推进</li>
+                    <li>海外市场拓展：东南亚、中东、非洲新兴市场</li>
+                    <li>应用场景多元化：从7大领域拓展至10+细分</li>
+                    <li>国产化率提升：2026年有望突破75%</li>
+                </ul>
+            </div>
+            
+            <div class="trend-card fade-in">
+                <div class="trend-header">
+                    <div class="trend-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
+                        <i class="ri-warning-line"></i>
+                    </div>
+                    <h3 class="trend-title">主要风险与挑战</h3>
+                </div>
+                <ul class="trend-list">
+                    <li>芯片供应风险：国产芯片厂商集中度较高</li>
+                    <li>价格下行风险：毛利率持续承压</li>
+                    <li>技术替代风险：5G RedCap可能形成替代</li>
+                    <li>国际贸易风险：地缘政治影响海外拓展</li>
+                    <li>政策风险：标准/认证政策可能变化</li>
+                </ul>
+            </div>
+            
+            <div class="trend-card fade-in">
+                <div class="trend-header">
+                    <div class="trend-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">
+                        <i class="ri-rocket-2-line"></i>
+                    </div>
+                    <h3 class="trend-title">竞争格局演变</h3>
+                </div>
+                <ul class="trend-list">
+                    <li>市场集中度提升：前五厂商份额有望突破70%</li>
+                    <li>价格竞争转向产品差异化竞争</li>
+                    <li>垂直行业深耕成为重要策略</li>
+                    <li>运营商渠道影响力持续增强</li>
+                    <li>出海竞争成为新战场</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="ri-broadcast-line"></i>
+                        </div>
+                        <span>Cat.1 Industry Atlas</span>
+                    </div>
+                    <p class="footer-desc">
+                        中国4G Cat.1模组产业全景分析报告，涵盖芯片厂商、模组厂商、下游应用及TOP50客户清单。
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">报告内容</h4>
+                    <ul class="footer-links">
+                        <li><a href="#industry-chain">产业链结构</a></li>
+                        <li><a href="#market-data">市场数据</a></li>
+                        <li><a href="#vendors">厂商对比</a></li>
+                        <li><a href="#applications">下游应用</a></li>
+                        <li><a href="#top-clients">TOP50客户</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">数据来源</h4>
+                    <ul class="footer-links">
+                        <li>Counterpoint Research</li>
+                        <li>IoT Analytics</li>
+                        <li>IDC</li>
+                        <li>华经产业研究院</li>
+                        <li>艾瑞咨询</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">部署信息</h4>
+                    <ul class="footer-links">
+                        <li>GitHub Pages</li>
+                        <li>静态网页托管</li>
+                        <li>免费部署</li>
+                        <li>自定义域名</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    © 2025 中国4G Cat.1模组产业图谱 | 报告编制：MiniMax Agent
+                </div>
+                <div class="footer-sources">
+                    数据来源：Counterpoint、IDC、IoT Analytics等权威机构 | 仅供参考，不构成投资建议
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Client Data
+        const clientsData = [
+            // 金融支付领域
+            { name: "新大陆科技集团", product: "POS机、扫码设备", category: "支付", position: "行业龙头" },
+            { name: "百富计算机技术", product: "支付终端", category: "支付", position: "行业前三" },
+            { name: "拉卡拉", product: "支付服务、POS", category: "支付", position: "头部服务商" },
+            { name: "联迪商用设备", product: "金融POS机", category: "支付", position: "头部厂商" },
+            { name: "天喻信息", product: "智能终端", category: "支付", position: "重要供应商" },
+            { name: "中科江南", product: "支付终端", category: "支付", position: "重要厂商" },
+            { name: "恒宝股份", product: "金融IC卡", category: "支付", position: "重要供应商" },
+            { name: "福建联迪", product: "POS终端", category: "支付", position: "重要厂商" },
+            { name: "深圳瑞柏", product: "支付方案", category: "支付", position: "重要厂商" },
+            { name: "深圳盒子", product: "智能POS", category: "支付", position: "重要厂商" },
+            
+            // 共享经济领域
+            { name: "怪兽充电", product: "共享充电宝", category: "共享", position: "行业头部" },
+            { name: "街电科技", product: "共享充电宝", category: "共享", position: "行业头部" },
+            { name: "美团充电", product: "共享充电宝", category: "共享", position: "头部企业" },
+            { name: "哈啰出行", product: "共享单车/电动车", category: "共享", position: "行业领先" },
+            { name: "青桔单车", product: "共享单车", category: "共享", position: "头部企业" },
+            { name: "人民出行", product: "共享电动车", category: "共享", position: "重要厂商" },
+            { name: "小电科技", product: "共享充电宝", category: "共享", position: "头部企业" },
+            { name: "来电科技", product: "共享充电宝", category: "共享", position: "重要厂商" },
+            { name: "友唱科技", product: "共享KTV", category: "共享", position: "细分领域头部" },
+            { name: "咪哒唱吧", product: "共享KTV", category: "共享", position: "细分领域头部" },
+            
+            // 智慧能源领域
+            { name: "三星医疗电气", product: "智能电表", category: "能源", position: "行业龙头" },
+            { name: "威胜信息", product: "智能表计", category: "能源", position: "行业领先" },
+            { name: "华立科技", product: "智能电表", category: "能源", position: "头部厂商" },
+            { name: "林洋能源", product: "智能表计", category: "能源", position: "重要厂商" },
+            { name: "正泰仪表", product: "智能电表", category: "能源", position: "重要厂商" },
+            { name: "杭州炬华", product: "智能电表", category: "能源", position: "重要厂商" },
+            { name: "宁波三星", product: "智能电表", category: "能源", position: "重要厂商" },
+            { name: "深圳友讯达", product: "无线模块", category: "能源", position: "重要供应商" },
+            { name: "中科智远", product: "智能表计", category: "能源", position: "重要厂商" },
+            { name: "浙江恒业", product: "智能水表", category: "能源", position: "重要厂商" },
+            
+            // 车载运输领域
+            { name: "雅迪控股", product: "电动自行车", category: "车载", position: "行业龙头" },
+            { name: "爱玛科技", product: "电动自行车", category: "车载", position: "头部企业" },
+            { name: "台铃集团", product: "电动自行车", category: "车载", position: "头部企业" },
+            { name: "新日股份", product: "电动自行车", category: "车载", position: "重要厂商" },
+            { name: "绿源集团", product: "电动自行车", category: "车载", position: "重要厂商" },
+            { name: "小牛电动", product: "电动自行车", category: "车载", position: "高端品牌" },
+            { name: "九号公司", product: "电动滑板车", category: "车载", position: "重要厂商" },
+            { name: "立马车业", product: "电动自行车", category: "车载", position: "重要厂商" },
+            { name: "比德文", product: "电动自行车", category: "车载", position: "重要厂商" },
+            { name: "新蕾车业", product: "电动自行车", category: "车载", position: "重要厂商" },
+            
+            // 资产追踪与智能穿戴领域
+            { name: "途强科技", product: "GPS定位器", category: "追踪", position: "细分领域头部" },
+            { name: "小天才", product: "儿童手表", category: "穿戴", position: "市场领先" },
+            { name: "360儿童", product: "儿童手表", category: "穿戴", position: "头部厂商" },
+            { name: "华为儿童", product: "儿童手表", category: "穿戴", position: "重要厂商" },
+            { name: "阿巴町", product: "儿童手表", category: "穿戴", position: "重要厂商" },
+            { name: "移为通信", product: "物联网终端", category: "追踪", position: "重要厂商" },
+            { name: "深圳美力高", product: "定位设备", category: "追踪", position: "重要厂商" },
+            { name: "康凯斯", product: "定位终端", category: "追踪", position: "重要厂商" },
+            { name: "乐心医疗", product: "健康设备", category: "穿戴", position: "重要厂商" },
+            { name: "小米", product: "智能手环", category: "穿戴", position: "头部厂商" }
+        ];
+
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            initCharts();
+            renderClients();
+            initScrollSpy();
+            initNavbarScroll();
+        });
+
+        // Charts Initialization
+        function initCharts() {
+            // Module Market Share Chart
+            const moduleCtx = document.getElementById('moduleMarketShareChart');
+            if (moduleCtx) {
+                new Chart(moduleCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['移远通信', '广和通', '中移物联网', '日海智能', '美格智能', '有方科技', '其他'],
+                        datasets: [{
+                            data: [37.2, 8.0, 5.9, 5.6, 4.5, 3.3, 25.5],
+                            backgroundColor: [
+                                '#3b82f6',
+                                '#10b981',
+                                '#8b5cf6',
+                                '#f59e0b',
+                                '#ef4444',
+                                '#6366f1',
+                                '#94a3b8'
+                            ],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    padding: 15,
+                                    usePointStyle: true
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Chip Market Share Chart
+            const chipCtx = document.getElementById('chipMarketShareChart');
+            if (chipCtx) {
+                new Chart(chipCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['高通', '紫光展锐', '翱捷科技', '联发科', '移芯通信', '芯翼信息', '其他'],
+                        datasets: [{
+                            data: [42, 25, 7, 5, 4, 3, 14],
+                            backgroundColor: [
+                                '#6366f1',
+                                '#8b5cf6',
+                                '#3b82f6',
+                                '#10b981',
+                                '#f59e0b',
+                                '#ef4444',
+                                '#94a3b8'
+                            ],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    padding: 15,
+                                    usePointStyle: true
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Price Trend Chart
+            const priceCtx = document.getElementById('priceTrendChart');
+            if (priceCtx) {
+                new Chart(priceCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['2019', '2020', '2021', '2022', '2023', '2024', '2025E', '2026E'],
+                        datasets: [{
+                            label: 'Cat.1模组均价',
+                            data: [50, 45, 38, 30, 24, 18, 15, 12],
+                            borderColor: '#3b82f6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                min: 0,
+                                max: 60,
+                                title: {
+                                    display: true,
+                                    text: '价格（元）'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Market Forecast Chart
+            const forecastCtx = document.getElementById('marketForecastChart');
+            if (forecastCtx) {
+                new Chart(forecastCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['2024', '2025E', '2026E', '2027E', '2028E'],
+                        datasets: [{
+                            label: '市场规模',
+                            data: [320, 380, 450, 500, 520],
+                            backgroundColor: [
+                                'rgba(59, 130, 246, 0.8)',
+                                'rgba(59, 130, 246, 0.8)',
+                                'rgba(16, 185, 129, 0.8)',
+                                'rgba(16, 185, 129, 0.8)',
+                                'rgba(16, 185, 129, 0.8)'
+                            ],
+                            borderRadius: 8
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: '市场规模（亿元）'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        // Render Client Table
+        function renderClients() {
+            const tbody = document.getElementById('clientTableBody');
+            if (!tbody) return;
+            
+            let filteredClients = clientsData;
+            
+            if (currentFilter !== 'all') {
+                filteredClients = filteredClients.filter(c => c.category === currentFilter);
+            }
+            
+            if (currentSearch) {
+                const search = currentSearch.toLowerCase();
+                filteredClients = filteredClients.filter(c => 
+                    c.name.toLowerCase().includes(search) || 
+                    c.product.toLowerCase().includes(search)
+                );
+            }
+            
+            tbody.innerHTML = filteredClients.map((client, index) => `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td><strong>${client.name}</strong></td>
+                    <td>${client.product}</td>
+                    <td><span class="badge ${getCategoryBadgeClass(client.category)}">${client.category}</span></td>
+                    <td>${client.position}</td>
+                </tr>
+            `).join('');
+        }
+
+        function getCategoryBadgeClass(category) {
+            switch(category) {
+                case '支付': return 'badge-blue';
+                case '共享': return 'badge-green';
+                case '能源': return 'badge-orange';
+                case '车载': return 'badge-blue';
+                default: return 'badge-orange';
+            }
+        }
+
+        function filterClients() {
+            currentSearch = document.getElementById('clientSearch').value;
+            renderClients();
+        }
+
+        function filterByCategory(category) {
+            currentFilter = category;
+            document.querySelectorAll('.filter-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            renderClients();
+        }
+
+        // Mobile Navigation
+        function toggleMobileNav() {
+            document.querySelector('.mobile-nav').classList.toggle('open');
+            document.querySelector('.mobile-overlay').classList.toggle('open');
+            document.body.style.overflow = document.querySelector('.mobile-nav').classList.contains('open') ? 'hidden' : '';
+        }
+
+        // Scroll Spy
+        function initScrollSpy() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            sections.forEach(section => observer.observe(section));
+        }
+
+        // Navbar Scroll Effect
+        function initNavbarScroll() {
+            window.addEventListener('scroll', () => {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        }
+
+        // Fade-in Animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(el => fadeObserver.observe(el));
+    </script>
+</body>
+</html>
