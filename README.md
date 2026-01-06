@@ -19,66 +19,7 @@ AIGC:
 
 网页已部署至GitHub Pages，可通过以下链接访问：
 
-**https://[用户名].github.io/cat1-industry-atlas/**
-
-（请将 `[用户名]` 替换为您的GitHub用户名）
-
-## 部署方法
-
-### 方法一：使用GitHub网页界面（推荐）
-
-1. **创建仓库**
-   - 登录GitHub账户
-   - 点击右上角 "+" → "New repository"
-   - Repository name填写：`cat1-industry-atlas`
-   - 选择 "Public"
-   - 点击 "Create repository"
-
-2. **上传文件**
-   - 点击 "uploading an existing file"
-   - 将本项目的 `index.html` 文件拖拽到上传区域
-   - 点击 "Commit changes"
-
-3. **启用GitHub Pages**
-   - 进入仓库的 "Settings" 页面
-   - 左侧菜单选择 "Pages"
-   - 在 "Branch" 部分：
-     - Branch选择：`main`（或 `master`）
-     - Folder选择：`/ (root)`
-   - 点击 "Save"
-   - 等待1-2分钟刷新页面，即可看到访问链接
-
-### 方法二：使用Git命令行
-
-```bash
-# 克隆仓库（如果已有）
-git clone https://github.com/[用户名]/cat1-industry-atlas.git
-
-# 进入项目目录
-cd cat1-industry-atlas
-
-# 初始化Git（如果未初始化）
-git init
-git add .
-git commit -m "Initial commit: China 4G Cat.1 Industry Atlas"
-
-# 关联GitHub仓库
-git remote add origin https://github.com/[用户名]/cat1-industry-atlas.git
-
-# 推送至GitHub
-git push -u origin main
-
-# 启用GitHub Pages（在GitHub仓库设置中启用）
-```
-
-## 项目结构
-
-```
-cat1-industry-atlas/
-├── index.html          # 主页面文件（包含所有HTML、CSS、JavaScript）
-├── README.md           # 本说明文件
-└── .gitignore          # Git忽略文件（可选）
-```
+**https://zengkepa-png.github.io/cat1-industry-atlas/**
 
 ## 功能特性
 
